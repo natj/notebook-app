@@ -32,10 +32,16 @@ export default class AppWrapper extends React.Component {
         this.fetchFirst("test-file");
     } 
 
+    updateState(e) {
+        e.preventDefault();
+        console.log(e.target);
+        this.fetchFirst("updated-test-file2");
+    }
 
-  render() {
+
+    render() {
     return (
-      <div className='app-container'>
+      <div className='app-container' onClick={e => this.updateState(e)}>
 
         <h2> App </h2>
         <Link to={'/'}>Home </Link>
