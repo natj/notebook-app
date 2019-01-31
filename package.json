@@ -1,9 +1,9 @@
 {
-  "name": "let-them-speak",
+  "name": "notebook-app",
   "version": "0.1.0",
   "author": "Yale DH Lab",
   "license": "MIT",
-  "description": "An archive of Holocaust survivor testimonies",
+  "description": "xxx",
   "main": "server/server.js",
   "scripts": {
     "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 7081 --history-api-fallback",
