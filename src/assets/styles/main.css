@@ -2,12 +2,12 @@
 
 body, html {
   height: 100%;
-  width: 100%;
+  width: 80%;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 20;
+  padding: 300;
   box-sizing: border-box;
 }
 

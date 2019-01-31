@@ -1,7 +1,14 @@
 import React from 'react';
 
+
+
+
+
 export default (props) => (
   <div className='subcomponent'>
-    Subcomponent
+    ------> Subcomponent
+
+
+
   </div>
 )
