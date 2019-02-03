@@ -1,5 +1,5 @@
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,12 +12,12 @@ const paths = {
   build: path.resolve(__dirname, 'build')
 }
 
-const uglifyConfig = {
-  sourceMap: false,
-  warnings: false,
-  mangle: true,
-  minimize: true
-}
+//const uglifyConfig = {
+//  sourceMap: false,
+//  warnings: false,
+//  mangle: true,
+//  minimize: true
+//}
 
 const htmlConfig = {
   template: path.join(paths.src, 'index.html'),
@@ -42,7 +42,7 @@ const common = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ['@babel/preset-env']
           }
         }
       },
@@ -57,11 +57,18 @@ const common = {
         }
       },
       {
-        test: /\.(css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it use publicPath in webpackOptions.output
+              publicPath: '../'
+            }
+          },
+          "css-loader"
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -78,7 +85,7 @@ const common = {
   plugins: [
     new CleanWebpackPlugin([paths.build]),
     new HtmlWebpackPlugin(htmlConfig),
-    new ExtractTextPlugin('styles.[contenthash].css'),
+    new MiniCssExtractPlugin({filename: "[name].css", chunkFilename: "[id].css" })
   ]
 };
 
@@ -109,7 +116,7 @@ const prodSettings = {
     new webpack.DefinePlugin({ 'process.env': {
       NODE_ENV: JSON.stringify('production')
     }}),
-    new webpack.optimize.UglifyJsPlugin(uglifyConfig),
+//    new webpack.optimize.UglifyJsPlugin(uglifyConfig),
     new OptimizeCssAssetsPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ]

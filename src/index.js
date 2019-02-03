@@ -9,10 +9,13 @@ import './assets/styles/style';
 
 // render the main component
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      {routes}
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('app')
+  //<Provider store={store}>
+  //  <ConnectedRouter history={history}>
+  //    {routes}
+  //  </ConnectedRouter>
+  //</Provider>
+
+    <App />
+
+  ,document.getElementById('app')
 );

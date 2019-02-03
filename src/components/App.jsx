@@ -39,23 +39,22 @@ export default class AppWrapper extends React.Component {
     }
     render() {
     return (
-      <div className='app-container' onClick={e => this.updateState(e)}>
+      //<div className='app-container' onClick={e => this.updateState(e)}>
+      <div className='app-container'>
         <h2> ------ App ------- </h2>
 
         <div id="boxes" className="grid" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px', gridAutoRows: 'minMax(50px, auto)', backgroundColor: 'skyblue'}}>
 
-        <Link to={'/'}>Home </Link>
-        <Link to={'/about'}>About </Link>
-        <Link to={'/about/subroute'}>Subcomponent </Link>
+            //<Link to={'/'}>Home </Link>
+            //<Link to={'/about'}>About </Link>
+            //<Link to={'/about/subroute'}>Subcomponent </Link>
 
+            {this.props.children}
 
-
-        {this.props.children}
-
-        {this.state.posts.map(post =>
-            <li key={post.id}>{post.text}</li>
-        )}
-
+            {this.state.posts.map(post =>
+                <li key={post.id}>{post.text}</li>
+            )}
+          
         </div>
 
         <h3> -----end of App------</h3>
