@@ -14,7 +14,7 @@ CORS(app)
 def items():
     '''Sample API route for data'''
 
-    print("serving api items2")
+    print("serving api items")
 
     return jsonify([{'title': 'AAAA'}, {'title': 'BBBB'}])
 
